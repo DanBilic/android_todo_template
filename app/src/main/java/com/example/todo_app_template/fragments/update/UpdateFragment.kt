@@ -3,6 +3,7 @@ package com.example.todo_app_template.fragments.update
 import android.app.AlertDialog
 import android.os.Bundle
 import android.renderscript.RenderScript
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -63,6 +64,9 @@ class UpdateFragment : Fragment() {
         val title = binding.currentTitleEt.text.toString()
         val description = binding.currentDescriptionEt.text.toString()
         val getPriority = binding.currentPrioritiesSpinner.selectedItem.toString()
+        println(title)
+        println(description)
+        println(getPriority)
 
         val validation = mSharedViewModel.verifyDataFromUser(title, description)
         if(validation){
@@ -74,6 +78,7 @@ class UpdateFragment : Fragment() {
                 description
             )
 
+            println(updatedItem)
             mToDoViewModel.updateData(updatedItem)
             Toast.makeText(requireContext(), "Successfully updated", Toast.LENGTH_SHORT).show()
             // navigate back to ListFragment
