@@ -40,8 +40,7 @@
             android:tint="@color/white"
             android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="list_fragment" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/no_data_imageView"
@@ -49,6 +48,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_no_data"
             android:visibility="invisible"
+            android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/recyclerView"
@@ -62,6 +62,7 @@
             android:layout_marginTop="12dp"
             android:text="@string/no_data"
             android:visibility="invisible"
+            android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
             android:textSize="16sp"
             android:alpha="0.5"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,9 +1,11 @@
 package com.example.todo_app_template.fragments
 
+import android.view.View
 import android.widget.Spinner
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.example.todo_app_template.R
 import com.example.todo_app_template.data.models.Priority
@@ -29,8 +31,18 @@ class BindingAdapters {
         fun sendDataToUpdateFragment(view: ConstraintLayout, currentItem: ToDoData){
             view.setOnClickListener {
                 // navigation with data
+                //ListFragment{Directions} -> Directions suffix is created for the classes that send the data
                 val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
                 view.findNavController().navigate(action)
+            }
+        }
+
+        @BindingAdapter("android:emptyDatabase")
+        @JvmStatic
+        fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>){
+            when(emptyDatabase.value){
+                true -> view.visibility = View.VISIBLE
+                false -> view.visibility = View.INVISIBLE
             }
         }
 
